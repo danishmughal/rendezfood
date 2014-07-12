@@ -7,6 +7,7 @@ class CreatePolls < ActiveRecord::Migration
     	t.string :description
     	t.datetime :food_time
     	t.boolean :active
+      t.string :address
 
       t.timestamps
     end

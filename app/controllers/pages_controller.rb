@@ -7,9 +7,6 @@ class PagesController < ApplicationController
 		end
 	end
 
-	def index
-	end
-
 	def splash
 	end
 
@@ -35,10 +32,12 @@ class PagesController < ApplicationController
             poll.save
             render :nothing => true, :status => 'success'
         end
-    end
-
+    end    
+    
     def search
         if request.post?
             keyword = [params["tag"]]
+        end
+    end
 
 end

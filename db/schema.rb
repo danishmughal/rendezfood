@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140712070643) do
     t.string   "description"
     t.datetime "food_time"
     t.boolean  "active"
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140712070643) do
 
   create_table "tags", force: true do |t|
     t.string   "tag_name"
+    t.integer  "poll_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
