@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712050347) do
+ActiveRecord::Schema.define(version: 20140712070643) do
 
   create_table "poll_items", force: true do |t|
     t.integer  "poll_id"
@@ -54,6 +54,12 @@ ActiveRecord::Schema.define(version: 20140712050347) do
     t.string   "state"
     t.string   "category"
     t.decimal  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "tag_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
