@@ -14,18 +14,11 @@
           <p><%= image_tag(@restaurant.image, :class=>"media-object pull-left") %></p>
           <p class="pull-right"><%= @restaurant.category %></p>
           <p><%= @restaurant.address %></p>
-          <%= link_to "Vote for this place", :controller => :restaurants, :action => :vote, :restaurant_id => @restaurant.id, :class => "btn btn-positive%>
+          <%= link_to "Vote for this place", :controller => :restaurants, :action => :vote, :restaurant_id => @restaurant.id, :class => "btn btn-positive" %>
 
         </div>
     </li>
 
-    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
-    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
-    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
-    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
-    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
-    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
-    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
     <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
     <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
   </ul>

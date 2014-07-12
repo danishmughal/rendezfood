@@ -48,13 +48,15 @@ class PagesController < ApplicationController
             puts JSON.parse(response.to_json)['businesses']
             biz_info = JSON.parse(response.to_json)['businesses'][0]
 
+            puts biz_info
+
             restaurant = Restaurant.new
             restaurant.name = biz_info['name']
             restaurant.image = biz_info['image_url']
-            restaurant.rating = biz_info['avg_rating']
-            restaurant.address = biz_info['address']
-            restaurant.city = biz_info['city']
-            restaurant.state = biz_info['state']
+            restaurant.rating = biz_info['rating']
+            restaurant.address = biz_info['location']['address'][0]
+            restaurant.city = biz_info['location']['city']
+            restaurant.state = biz_info['location']['state_code']
             restaurant.category = biz_info['categories'][0][0]
             restaurant.poll_id = pollid
             restaurant.votes = 0
@@ -72,6 +74,9 @@ class PagesController < ApplicationController
                                                 :html => html}.to_json }
             end
 
+            puts 'lol'
+            puts restaurant.city
+=begin
             search_uri = 'http://api.locu.com/v1_0/venue/search/?api_key=ac6c8128fa9f47c81ed10e87f427f51f29c5c4de'
 
             search_uri << '&name=' << restaurant.name \
@@ -107,6 +112,7 @@ class PagesController < ApplicationController
                     menu.save
                 end
             end
+=end
         end
     end    
 end

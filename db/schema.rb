@@ -13,14 +13,17 @@
 
 ActiveRecord::Schema.define(version: 20140712153032) do
 
-  create_table "menuitems", force: true do |t|
-    t.string   "name"
-    t.decimal  "price"
-
   create_table "menu_items", force: true do |t|
     t.integer  "menu_id"
     t.string   "name"
     t.string   "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "menuitems", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
