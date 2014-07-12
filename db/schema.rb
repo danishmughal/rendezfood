@@ -11,7 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712034654) do
+ActiveRecord::Schema.define(version: 20140712050347) do
+
+  create_table "poll_items", force: true do |t|
+    t.integer  "poll_id"
+    t.integer  "restaurant_id"
+    t.integer  "votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "poll_users", force: true do |t|
+    t.integer  "poll_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "poll_votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "poll_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "polls", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "food_time"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "restaurants", force: true do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "description"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "category"
+    t.decimal  "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
