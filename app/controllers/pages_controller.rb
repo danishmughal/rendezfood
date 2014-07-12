@@ -38,8 +38,6 @@ class PagesController < ApplicationController
 
             client = Yelp::Client.new
             
-            #include Yelp::V2::Search::Request 
-
             request = Yelp::V2::Search::Request::Location.new(
                         :term => tag.tag_name,
                         :address => 'San Francisco',
@@ -60,11 +58,12 @@ class PagesController < ApplicationController
             restaurant.category = biz_info['categories'][0][0]
             restaurant.save
             
-            html = '<li class="table-view-cell media"><a class="navigate-right" href="restaurant.html" data-transition="slide-in"><span class="badge">#</span><img height="50" width="50" class="media-object pull-left" src="restaurant_image"><div class="media-body">restaurant_name<p>restaurant_category</p></div></a></li>'
+            html = '<li class="table-view-cell media"><a class="navigate-right" href="restaurant.html" data-transition="slide-in"><span class="badge">#</span><img height="50" width="50" class="media-object pull-left" src="restaurant_image"><div class="media-body">restaurant_name<p>restaurant_category</p><img class="pull-left" src="restaurant_stars"/></div></a></li>'
 
             html.sub! 'restaurant_image', restaurant.image
             html.sub! 'restaurant_name', restaurant.name
             html.sub! 'restaurant_category', restaurant.category
+            html.sub! 'restaurant_stars', biz_info['rating_img_url_small']
 
             respond_to do |format|
                 format.json { render :json => {:status => 'true',
