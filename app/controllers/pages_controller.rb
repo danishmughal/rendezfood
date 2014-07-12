@@ -16,4 +16,12 @@ class PagesController < ApplicationController
 	def restaurant
 	end
 
+    def search
+        if request.post?
+            pollid = [params[:pollid]]
+            tag = [params[:tag]]
+            
+        end
+    end
+
 end
