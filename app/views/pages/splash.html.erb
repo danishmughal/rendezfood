@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Movie finder</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="stylesheet" href="dist/css/ratchet.min.css">
+    <link rel="stylesheet" href="dist/css/app.css">
+    <script src="dist/js/ratchet.min.js"></script>
+  </head>
+  <body>
+    <div class="content">
+
+      <div class="slider">
+        <div class="slide-group">
+          <div class="slide">
+            <img src="http://www.listofimages.com/wallpapers/2014/06/Colorful-Peppers-Food-Wallpaper-Vegetables-Wallpapers-640x480.jpg" alt="Argo" width="640" height="450">
+          </div>
+          <div class="slide">
+             <img src="img/skyfall.png" alt="Skyfall" width="640" height="450">
+          </div>
+          <div class="slide">
+             <img src="img/ralph.png" alt="Wreck-It Ralph" width="640" height="450">
+          </div>
+        </div>
+      </div>
+
+      <%= button_to "Login with Facebook", user_omniauth_authorize_path(:facebook), :class => 'btn btn-primary btn-block' %>
+    </div>
+  </body>
+</html>

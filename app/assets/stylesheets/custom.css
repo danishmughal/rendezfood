@@ -1,0 +1,19 @@
+#countdown_clock{
+	text-align: center;
+	font-size: 5em;
+	color: white;
+}
+
+#poll_description{
+	text-align: center;
+	color: white;
+}
+
+#poll_time{
+	text-align: center;
+	color: white;
+}
+
+.content{
+	background-color: #cb202d;
+}
