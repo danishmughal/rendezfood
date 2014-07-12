@@ -8,6 +8,7 @@
 #  description :string(255)
 #  food_time   :datetime
 #  active      :boolean
+#  address     :string(255)
 #  created_at  :datetime
 #  updated_at  :datetime
 #

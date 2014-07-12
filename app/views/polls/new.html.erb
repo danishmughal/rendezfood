@@ -1,0 +1,34 @@
+<header class="bar bar-nav">
+	<h1 class="title">Add Poll</h1>
+	<a class="icon pull-left" href="/" data-transition="slide-out"><i class="fa fa-arrow-left"></i></a>
+</header>
+
+<div class="content">
+	<%= form_for(@poll) do |f| %>
+  	<form class="add_poll_form">
+  	  <label for="name">Poll Name</label>
+	    <%= f.text_field :title %>
+	    <%= f.hidden_field :user_id, value: current_user.id %>
+	    <%= f.hidden_field :active, value: true %>
+
+		  <label for="description">Poll Description</label>
+      <%= f.text_field :description, "name"=>"date_time_poll" %>
+
+		  <label for="date_time_poll">Date and Time</label>
+	    <%= f.datetime_select :food_time %>
+
+		  <label for="date_time_poll">Friends</label>
+
+		  <select class="form_friends" name="friends" multiple>
+			  <option value="volvo">Danish</option>
+			  <option value="saab">Akhil</option>
+			  <option value="opel">Neel</option>
+			  <option value="audi">Mihir</option>
+		  </select>
+
+		  <button class="btn btn-positive btn-block">    <%= f.submit %></button>
+		</form>
+	<% end %>
+</div>
+
+

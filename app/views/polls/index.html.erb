@@ -1,0 +1,61 @@
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav">
+      <a class="icon pull-left"><i class="fa fa-gear"></i></a>
+      <a class="icon pull-right" href="#myModalexample"><i class="fa fa-plus"></i></a>
+      <h1 class="title">RendezFood</h1>
+    </header>
+    
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+    <div class="content">
+    <div class="card">
+      <ul class="table-view">
+
+        <% if !@polls.nil? %>
+          <% @polls.each do |poll| %>
+
+            <li class="table-view-cell media">
+              <a class="navigate-right" href=<%="/polls/#{poll.id}"%> data-transition="slide-in">
+                <span class="badge">#</span>
+                <%= image_tag(poll.user.image, :class => "media-object pull-left") %>
+
+                <div class="media-body">
+                  <%= poll.title %> - <%= time_ago_in_words(poll.food_time) %> left
+                  <p><%= poll.description %></p>
+                </div>
+              </a>
+            </li>
+          <% end %>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+
+  <div id="myModalexample" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon pull-right" href="#myModalexample"><i class="fa fa-times"></i></a>
+    <h1 class="title">Add Poll</h1>
+  </header>
+
+  <div class="content">
+    <%= form_for(@poll) do |f| %>
+      <form class="add_poll_form">
+        <label for="name">Poll Name</label>
+        <%= f.text_field :title, "type"=>"text" %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :active, value: true %>
+
+        <label for="description">Poll Description</label>
+        <%= f.text_field :description, "name"=>"date_time_poll", "type"=>"text" %>
+
+        <label for="date_time_poll">Date and Time</label>
+        <%= f.datetime_select :food_time, "type"=>"datetime-local" %>
+
+        <%= f.submit "Create Poll", :class =>"btn btn-positive btn-block"%>
+      </form>
+    <% end %>
+  </div>
+
+  </div>
+
+</div>

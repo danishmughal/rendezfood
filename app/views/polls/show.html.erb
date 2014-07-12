@@ -1,0 +1,31 @@
+    <header class="bar bar-nav">
+      <a class="icon pull-left" href="/" data-transition="slide-out"><i class="fa fa-arrow-left"></i></a>
+      <h1 class="title"><%= @poll.title %></h1>
+    </header>
+
+    <div class="content">
+    <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+        <h1 id="countdown_clock"><%= time_ago_in_words(@poll.food_time) %> left</h1>
+        <p id="poll_description" class="content-padded"><%= @poll.description %></p>
+        <p id="poll_time"><%= @poll.food_time %></p>
+          <form class="content-padded">
+          <input type="text" placeholder="Search">
+         </form>
+
+            <% @poll_items.each do |p| %>
+              <div class="card">
+                <ul class="table-view">
+                  <li class="table-view-cell media">
+                    <a class="navigate-right" href="restaurant.html" data-transition="slide-in">
+                      <span class="badge">#</span>
+                      <img class="media-object pull-left" src="http://placehold.it/42x42">
+                      <div class="media-body">
+                        <%= p.restaurant.name %>
+                        <p><%= p.restaurant.category %></p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+        </div>

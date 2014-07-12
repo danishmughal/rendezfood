@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :polls, through: :poll_users
+
 
   # Omniauth callback
   def self.from_omniauth(auth)
