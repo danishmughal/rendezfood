@@ -1,0 +1,32 @@
+<header class="bar bar-nav">
+    <h1 class="title"><%= @restaurant.name %></h1>
+    <a class="icon pull-left" href="/polls/#{@restaurant.poll_id}" data-transition="slide-out"><i class="fa fa-arrow-left"></i></a>
+</header>
+  
+<style>
+
+</style>
+    
+<div class="content">
+  <ul class="table-view">
+    <li class="table-view-cell media">
+        <div class="media-body">
+          <p><%= image_tag(@restaurant.image, :class=>"media-object pull-left") %></p>
+          <p class="pull-right"><%= @restaurant.category %></p>
+          <p><%= @restaurant.address %></p>
+          <%= link_to "Vote for this place", :controller => :restaurants, :action => :vote, :restaurant_id => @restaurant.id, :class => "btn btn-positive%>
+
+        </div>
+    </li>
+
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+    <li class="table-view-cell">[menu item]<span class="badge">$[price]</span></li>
+  </ul>
+</div>

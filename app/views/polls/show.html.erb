@@ -1,31 +1,118 @@
+<head>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</head>
+
     <header class="bar bar-nav">
       <a class="icon pull-left" href="/" data-transition="slide-out"><i class="fa fa-arrow-left"></i></a>
       <h1 class="title"><%= @poll.title %></h1>
     </header>
 
+    <script>
+      var seconds = <%= (@poll.food_time - Time.now).round %>;
+      function secondPassed() {
+          var minutes = Math.round((seconds - 30)/60);
+          var remainingSeconds = seconds % 60;
+          if (remainingSeconds < 10) {
+              remainingSeconds = "0" + remainingSeconds;  
+          }
+          document.getElementById('countdown_clock').innerHTML = minutes + ":" + remainingSeconds;
+          if (seconds == 0) {
+              clearInterval(countdownTimer);
+              document.getElementById('countdown_clock').innerHTML = "Final Call!";
+          } else {
+              seconds--;
+          }
+      }
+       
+      var countdownTimer = setInterval('secondPassed()', 1000);
+    </script>
+
     <div class="content">
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-        <h1 id="countdown_clock"><%= time_ago_in_words(@poll.food_time) %> left</h1>
+        <h1 id="countdown_clock"></h1>
         <p id="poll_description" class="content-padded"><%= @poll.description %></p>
-        <p id="poll_time"><%= @poll.food_time %></p>
+        <p id="poll_time">[Time ex: 8:00 pm - Dec 13th, 2014]</p>
           <form class="content-padded">
-          <input type="text" placeholder="Search">
+          <input type="text" id="search_field" placeholder="Search">
+          <button class="btn btn-positive btn-block" id="search_btn">Search</button>
          </form>
+         <div class="poll_id"><%= @poll_id %></div>
 
-            <% @poll_items.each do |p| %>
-              <div class="card">
-                <ul class="table-view">
-                  <li class="table-view-cell media">
-                    <a class="navigate-right" href=<%="/restaurants/#{p.restaurant_id}"%> data-transition="slide-in">
-                      <span class="badge">#</span>
-                      <img class="media-object pull-left" src="http://placehold.it/42x42">
-                      <div class="media-body">
-                        <%= p.restaurant.name %>
-                        <p><%= p.restaurant.category %></p>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            <% end %>
+         <style> 
+         .loading{
+          display: none;
+          margin: auto;
+         }
+
+         .poll_id{
+          display: none;
+         }
+
+         #restaurant_rec_info{
+          display: none;
+          color: white;
+          text-align: center;
+         }
+         </style>
+         
+         <p id="restaurant_rec_info"></p>
+         <img class="loading" src="/public/ajax-loader.gif"/>
+
+            <script>
+
+            $(document).ready(function(){
+              $("#search_btn").click(function(){
+                  //make keyboard disappear
+                  $('#search_field').blur();
+
+                  event.preventDefault();
+                  $(".loading").css("display","block");
+                  $("#restaurant_rec_info").text("Recommending Restaurants for " + $("#search_field").val() + "...");
+                  $("#restaurant_rec_info").css("display", "block");
+                  $("#search_btn").css("display", "none");
+                  var search_term = $("#search_field").val();
+                  var pollid = $(".poll_id").text();
+                  alert(search_term + " " + pollid);
+                  $("#search_field").val("");
+
+                  //alert($("#search_field").val());
+                  $.post("http://localhost:3000/tag/search/",
+                  {
+                    tag: search_term,
+                    pollid:pollid
+                  },
+                  
+                  function(data,status){
+                    if(data['status'] === "true"){
+                      $(".table-view").append(data['html']);
+                    }    
+                    $(".loading").css("display","none");
+                    $("#restaurant_rec_info").css("display", "none");
+                    $("#search_btn").css("display", "block");
+                  });
+                });
+
+            
+              return false;
+
+              });
+              
+            </script>
+
+            <div class="card">
+              <ul class="table-view">
+                <% @restaurants.each do |r| %>
+                <li class="table-view-cell media">
+                  <a class="navigate-right" href=<%="/restaurants/#{r.id}"%> data-transition="slide-in">
+                    <span class="badge"><%= r.votes %></span>
+                    <%= image_tag(r.image, :class=>"media-object pull-left", :size=>"42x42") %>
+                    <div class="media-body">
+                      <%= r.name %>
+                      <p><%= r.category %></p>
+                    </div>
+                  </a>
+                </li>
+                <% end %>
+              </ul>
+            </div>
         </div>

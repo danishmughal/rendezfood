@@ -16,4 +16,7 @@
 #
 
 class Restaurant < ActiveRecord::Base
+
+	belongs_to :poll_item
+
 end

@@ -9,13 +9,17 @@ class PollsController < ApplicationController
     else
       poll_users = PollUser.where(user_id: current_user.id)
       @polls = []
-      poll_users.each do |pu|
-        @poll = Poll.find(pu.poll_id)
-        unless @poll.food_time.past?
-          @polls << @poll
+      if !poll_users.nil?
+        poll_users.each do |pu|
+          @poll = Poll.find(pu.poll_id)
+          unless @poll.food_time.past?
+            @polls << @poll
+          end
         end
       end
     end
+    @poll = Poll.new
+
   end
 
   # GET /polls/1
@@ -23,6 +27,9 @@ class PollsController < ApplicationController
   def show
     @time_left = TimeDifference.between(Time.now, @poll.food_time).in_minutes
     @poll_items = PollItem.where(poll_id: @poll.id)
+
+    @restaurants = Restaurant.where(poll_id: @poll.id)
+    @poll_id = @poll.id
   end
 
   # GET /polls/new

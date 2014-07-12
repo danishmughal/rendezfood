@@ -56,9 +56,11 @@ class PagesController < ApplicationController
             restaurant.city = biz_info['city']
             restaurant.state = biz_info['state']
             restaurant.category = biz_info['categories'][0][0]
+            restaurant.poll_id = pollid
+            restaurant.votes = 0
             restaurant.save
             
-            html = '<li class="table-view-cell media"><a class="navigate-right" href="restaurant.html" data-transition="slide-in"><span class="badge">#</span><img height="50" width="50" class="media-object pull-left" src="restaurant_image"><div class="media-body">restaurant_name<p>restaurant_category</p><img class="pull-left" src="restaurant_stars"/></div></a></li>'
+            html = '<li class="table-view-cell media"><a class="navigate-right" href="/restaurants/#{p.restaurant_id}" data-transition="slide-in"><span class="badge">#</span><img height="50" width="50" class="media-object pull-left" src="restaurant_image"><div class="media-body">restaurant_name<p>restaurant_category</p><img class="pull-left" src="restaurant_stars"/></div></a></li>'
 
             html.sub! 'restaurant_image', restaurant.image
             html.sub! 'restaurant_name', restaurant.name

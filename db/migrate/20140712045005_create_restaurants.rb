@@ -2,6 +2,9 @@ class CreateRestaurants < ActiveRecord::Migration
   def change
     create_table :restaurants do |t|
 
+      t.belongs_to :poll
+      t.integer :votes
+
     	t.string :name
     	t.string :image
     	t.string :address
@@ -9,6 +12,7 @@ class CreateRestaurants < ActiveRecord::Migration
     	t.string :state
     	t.string :category
     	t.decimal :rating
+
 
       t.timestamps
     end
