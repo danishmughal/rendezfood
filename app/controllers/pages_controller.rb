@@ -7,21 +7,18 @@ class PagesController < ApplicationController
 		end
 	end
 
-	def index
-	end
-
 	def splash
 	end
 
 	def restaurant
 	end
 
-    def search
-        if request.post?
-            pollid = [params[:pollid]]
-            tag = [params[:tag]]
-            
-        end
-    end
+  def search
+      if request.post?
+          pollid = [params[:pollid]]
+          tag = [params[:tag]]
+          
+      end
+  end
 
 end
