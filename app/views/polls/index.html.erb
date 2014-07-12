@@ -36,7 +36,7 @@
 
             <li class="table-view-cell media">
               <a class="navigate-right" href=<%="/polls/#{poll.id}"%> data-transition="slide-in">
-                <span class="badge time_info"><%= time_ago_in_words(poll.food_time) %></span>
+                <span class="badge time_info">in <%= time_ago_in_words(poll.food_time) %></span>
                 <%= image_tag(poll.user.image, :class => "media-object pull-left") %>
 
                 <div class="media-body">

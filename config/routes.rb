@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/restaurant' => 'pages#restaurant'
   post '/tag/search' => 'pages#search'
 
+  post '/createpoll' => 'polls#create'
+
   get '/vote' => 'restaurants#vote'
 
   # The priority is based upon order of creation: first created -> highest priority.
