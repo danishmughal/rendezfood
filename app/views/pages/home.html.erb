@@ -1,97 +1,110 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Movie finder</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <link rel="stylesheet" href="dist/css/ratchet.min.css">
-    <link rel="stylesheet" href="dist/css/custom.css">
-    <link rel="stylesheet" href="css/app.css">
-    <script src="dist/js/ratchet.min.js"></script>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<style>
+.content {
+  background-color: #cb202d;
+}
+</style>
+
   </head>
   <body>
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
-      <h1 class="title">[Poll Name]</h1>
-        <nav class="bar bar-tab">
-        <a class="tab-item" href="home.html" data-transition="slide-out">
-          <span class="icon icon-home"></span>
-          <span class="tab-label">Home</span>
-        </a>
-        <a class="tab-item active" href="polls.html" data-transition="slide-out">
-          <span class="icon icon-list"></span>
-          <span class="tab-label">Polls</span>
-        </a>
-        <a class="tab-item" href="#">
-          <span class="icon icon-person"></span>
-          <span class="tab-label">Profile</span>
-        </a>
-        </nav>
+      <h1 class="title">RendezFood</h1>
+      <a class="icon icon-plus pull-left" href="#myModalexample"></a>
     </header>
 
-    <div class="content">
     <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-        <h1 id="countdown_clock">9:32</h1>
-        <p id="poll_description" class="content-padded">[Description ex: Neel's 21st Bday Dinner!]</p>
-        <p id="poll_time">[Time ex: 8:00 pm - Dec 13th, 2014]</p>
-          <form class="content-padded">
-          <input type="text" placeholder="Search">
-         </form>
+    <div class="content">
+        <div id="myModalexample" class="modal">
+          <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#myModalexample"></a>
+            <h1 class="title">Modal</h1>
+          </header>
 
-            <div class="card">
-              <ul class="table-view">
-                <li class="table-view-cell media">
-                  <a class="navigate-right" href="restaurant.html" data-transition="slide-in">
-                    <span class="badge">#</span>
-                    <img class="media-object pull-left" src="http://placehold.it/42x42">
-                    <div class="media-body">
-                      Restaurant 1
-                      <p>Restaurant Type</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="table-view-cell media">
-                  <a class="navigate-right" href="restaurant.html" data-transition="slide-in">
-                    <span class="badge">#</span>
-                    <img class="media-object pull-left" src="http://placehold.it/42x42">
-                    <div class="media-body">
-                      Restaurant 1
-                      <p>Restaurant Type</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="table-view-cell media">
-                  <a class="navigate-right" href="restaurant.html" data-transition="slide-in">
-                    <span class="badge">#</span>
-                    <img class="media-object pull-left" src="http://placehold.it/42x42">
-                    <div class="media-body">
-                      Restaurant 1
-                      <p>Restaurant Type</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="table-view-cell media">
-                  <a class="navigate-right" href="restaurant.html" data-transition="slide-in">
-                    <span class="badge">#</span>
-                    <img class="media-object pull-left" src="http://placehold.it/42x42">
-                    <div class="media-body">
-                      Restaurant 1
-                      <p>Restaurant Type</p>
-                    </div>
-                  </a>
-                </li>
-                <li class="table-view-cell media">
-                  <a class="navigate-right" href="restaurant.html" data-transition="slide-out">
-                    <span class="badge">#</span>
-                    <img class="media-object pull-left" src="http://placehold.it/42x42">
-                    <div class="media-body">
-                      Restaurant 1
-                      <p>Restaurant Type</p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div class="content">
+           <form class="add_poll_form">
+                <label for="name">Poll Name</label>
+              <input type="text">
+              <label for="description">Poll Description</label>
+              <textarea rows="4"></textarea>
+              <label for="date_time_poll">Date and Time</label>
+              <input type="datetime-local" name="date_time_poll">
+              <label for="date_time_poll">Friends</label>
+              <select class="form_friends" name="friends" multiple>
+                <option value="volvo">Danish</option>
+                <option value="saab">Akhil</option>
+                <option value="opel">Neel</option>
+                <option value="audi">Mihir</option>
+              </select>
+              <button class="btn btn-positive btn-block">Create Poll</button>
+            </form>
+          </div>
         </div>
+
+    <div class="card">
+      <ul class="table-view">
+        <li class="table-view-cell media">
+          <a class="navigate-right" href="index.html" data-transition="slide-in">
+            <span class="badge">#</span>
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+              [Poll Name]
+              <p>[Poll Description]</p>
+            </div>
+          </a>
+        </li>
+         <li class="table-view-cell media">
+          <a class="navigate-right" href="index.html" data-transition="slide-in">
+            <span class="badge">#</span>
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+              [Poll Name]
+              <p>[Poll Description]</p>
+            </div>
+          </a>
+        </li>
+         <li class="table-view-cell media">
+          <a class="navigate-right" href="index.html" data-transition="slide-in">
+            <span class="badge">#</span>
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+              [Poll Name]
+              <p>[Poll Description]</p>
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a class="navigate-right" href="index.html" data-transition="slide-in">
+            <span class="badge">#</span>
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+              [Poll Name]
+              <p>[Poll Description]</p>
+            </div>
+          </a>
+        </li>
+        <li class="table-view-cell media">
+          <a class="navigate-right" href="index.html" data-transition="slide-in">
+            <span class="badge">#</span>
+            <img class="media-object pull-left" src="http://placehold.it/42x42">
+            <div class="media-body">
+              [Poll Name]
+              <p>[Poll Description]</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
   </body>
 </html>

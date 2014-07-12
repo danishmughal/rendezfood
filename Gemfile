@@ -30,6 +30,8 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'omniauth-facebook'
 
+gem "font-awesome-rails"
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
