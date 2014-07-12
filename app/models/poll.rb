@@ -17,5 +17,6 @@ class Poll < ActiveRecord::Base
 	belongs_to :user
 	has_many :poll_items
 	has_many :poll_users
+    has_many :tags
 
 end

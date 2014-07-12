@@ -19,8 +19,15 @@ class PagesController < ApplicationController
     def search
         if request.post?
             pollid = [params[:pollid]]
-            tag = [params[:tag]]
-            
+            tag_name = [params[:tag]]
+
+            tag = Tag.new
+            tag.name = tag_name
+            tag.save
+
+            poll = Poll.where(:id = pollid)
+            poll.tags << tag
+            poll.save
         end
     end
 
