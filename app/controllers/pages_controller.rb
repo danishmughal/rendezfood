@@ -74,9 +74,6 @@ class PagesController < ApplicationController
                                                 :html => html}.to_json }
             end
 
-            puts 'lol'
-            puts restaurant.city
-=begin
             search_uri = 'http://api.locu.com/v1_0/venue/search/?api_key=ac6c8128fa9f47c81ed10e87f427f51f29c5c4de'
 
             search_uri << '&name=' << restaurant.name \
@@ -90,12 +87,12 @@ class PagesController < ApplicationController
                 json = JSON.parse(res.body)                
                 id = json['objects'][0]['id']
                 venue_uri = 'http://api.locu.com/v1_0/venue/{venue_id}/?api_key=ac6c8128fa9f47c81ed10e87f427f51f29c5c4de'
-                venue_url.sub! '{venue_id}', id
+                venue_uri.sub! '{venue_id}', id
                 res = Net::HTTP.get_response(URI.parse(URI.encode(venue_uri)))
                 if res.is_a?(Net::HTTPSuccess)
                     json = JSON.parse(res.body)
                     menu = json['objects'][0]['menus']
-                    menu = Menu.new
+                    menu_obj = Menu.new
                     for section in menu[0]['sections']
                         for subsection in section['subsections']
                             for menu_item in subsection['contents']
@@ -104,15 +101,14 @@ class PagesController < ApplicationController
                                 item.price = menu_item['price']
                                 if not item.price.nil?
                                     item.save
-                                    menu.items << item
+                                    menu_obj.menu_items << item
                                 end
                             end
                         end
                     end
-                    menu.save
+                    menu_obj.save
                 end
             end
-=end
         end
     end    
 end
