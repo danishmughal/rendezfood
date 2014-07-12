@@ -16,19 +16,29 @@ class PagesController < ApplicationController
 	def restaurant
 	end
 
-    def search
+    def add_tag
         if request.post?
             pollid = [params[:pollid]]
             tag_name = [params[:tag]]
 
+            tag = Tag.find(:tag_name = tag_name)
+            if tag
+                render :nothing => true, :status => 'failed'
+                return
+            end
             tag = Tag.new
-            tag.name = tag_name
+            tag.tag_name = tag_name
             tag.save
 
-            poll = Poll.where(:id = pollid)
+            poll = Poll.find(:id = pollid)
             poll.tags << tag
             poll.save
+            render :nothing => true, :status => 'success'
         end
     end
+
+    def search
+        if request.post?
+            keyword = [params["tag"]]
 
 end
