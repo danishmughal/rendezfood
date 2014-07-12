@@ -49,7 +49,7 @@
         <%= f.text_field :description, "name"=>"date_time_poll", "type"=>"text" %>
 
         <label for="date_time_poll">Date and Time</label>
-        <%= f.datetime_select :food_time, "type"=>"datetime-local" %>
+        <%= f.text_field :food_time, "type"=>"datetime-local", "name"=>"date_time_poll" %>
 
         <%= f.submit "Create Poll", :class =>"btn btn-positive btn-block"%>
       </form>

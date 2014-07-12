@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # == Schema Information
 #
 # Table name: menus
@@ -8,6 +9,8 @@
 #  updated_at    :datetime
 #
 
+=======
+>>>>>>> bfda527bbd01d42bd869692ff5479b690b862781
 require 'test_helper'
 
 class MenuTest < ActiveSupport::TestCase
