@@ -15,6 +15,6 @@ class PollItem < ActiveRecord::Base
 	belongs_to :poll
 	has_one :restaurant
 	has_many :poll_votes
-    has_many :tags
+  has_many :tags
 
 end

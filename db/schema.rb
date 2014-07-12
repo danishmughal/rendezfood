@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20140712070643) do
   create_table "restaurants", force: true do |t|
     t.string   "name"
     t.string   "image"
-    t.string   "description"
     t.string   "address"
     t.string   "city"
     t.string   "state"

@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  resources :polls
+  resources :poll_items
+  resources :poll_votes
+  resources :restaurants
+  resources :tags
   
-  root to: 'pages#home'
+  root to: 'polls#index'
   get '/splash' => 'pages#splash'
   get '/restaurant' => 'pages#restaurant'
   post '/tag/search' => 'pages#search'

@@ -29,7 +29,7 @@ gem 'spring',        group: :development
 # Added
 gem 'devise'
 gem 'omniauth-facebook'
-
+gem 'time_difference'
 gem "font-awesome-rails"
 
 group :development do
