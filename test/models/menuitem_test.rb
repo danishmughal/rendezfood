@@ -1,22 +1,17 @@
 # == Schema Information
 #
-# Table name: restaurants
+# Table name: menuitems
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
-#  image      :string(255)
-#  address    :string(255)
-#  city       :string(255)
-#  state      :string(255)
-#  category   :string(255)
-#  rating     :decimal(, )
+#  price      :decimal(, )
 #  created_at :datetime
 #  updated_at :datetime
 #
 
 require 'test_helper'
 
-class RestaurantTest < ActiveSupport::TestCase
+class MenuitemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
