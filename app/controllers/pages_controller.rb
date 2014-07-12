@@ -78,13 +78,13 @@ class PagesController < ApplicationController
 
             search_uri << '&name=' << restaurant.name \
                         << '&has_menu=true' \
-                        << '&street_address=' << restaurant.address \
                         << '&locality=' << restaurant.city \
                         << '&region=' << restaurant.state
 
             res = Net::HTTP.get_response(URI.parse(URI.encode(search_uri)))
             if res.is_a?(Net::HTTPSuccess)
-                json = JSON.parse(res.body)                
+                json = JSON.parse(res.body) 
+                puts json               
                 id = json['objects'][0]['id']
                 venue_uri = 'http://api.locu.com/v1_0/venue/{venue_id}/?api_key=ac6c8128fa9f47c81ed10e87f427f51f29c5c4de'
                 venue_uri.sub! '{venue_id}', id
